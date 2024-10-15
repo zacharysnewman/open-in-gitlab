@@ -1,0 +1,80 @@
+{
+  "name": "open-in-gitlab",
+  "displayName": "Open in Gitlab",
+  "description": "Quickly open files in Gitlab from VS Code",
+  "version": "0.1.0",
+  "publisher": "zacharysnewman",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "icon": "icon.png",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "gitlab",
+    "navigation",
+    "open",
+    "files"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "login": "npx vsce login zacharysnewman",
+    "publish": "npx vsce publish minor",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "activationEvents": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zacharysnewman/open-in-gitlab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zacharysnewman/open-in-gitlab/issues"
+  },
+  "homepage": "https://github.com/zacharysnewman/open-in-gitlab#readme",
+  "license": "MIT",
+  "contributes": {
+    "commands": [
+      {
+        "command": "openInGitlab.open",
+        "title": "Open in Gitlab"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "openInGitlab.open",
+          "group": "navigation@100",
+          "when": "!explorerResourceIsFolder"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Open in Gitlab Configuration",
+      "properties": {
+        "openInGitlab.basePath": {
+          "type": "string",
+          "default": "your-base-path",
+          "description": "The base path used in the Gitlab URL."
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.8",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.94.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.11.1",
+    "typescript": "^5.6.2"
+  }
+}
