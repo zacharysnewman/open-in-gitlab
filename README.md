@@ -7,8 +7,8 @@
 ## Features
 
 - **Quick Access:** Open any file in Gitlab directly from VS Code.
-- **Customizable Settings:** Configure the Gitlab base path to match your project's structure.
-- **Seamless Integration:** Integrates with the VS Code explorer context menu for easy access.
+- **Customizable Settings:** Configure the GitLab instance URL to point at gitlab.com or any self-hosted instance.
+- **Seamless Integration:** Integrates with the VS Code explorer context menu and command palette for easy access.
 
 ## Installation
 
@@ -26,45 +26,45 @@
    - Search for **Open in Gitlab** to find the extension's settings.
    - Set the following configuration options:
 
-     - **Base Path (`openInGitlab.basePath`):**
+     - **Instance URL (`openInGitlab.instanceUrl`):**
 
-       - The base path used in the Gitlab URL (e.g., "code.company.com/path").
+       - The full URL of your GitLab instance (e.g., `https://gitlab.com` or `https://gitlab.mycompany.com`). Defaults to `https://gitlab.com`.
 
 2. **Using the Extension:**
 
-   - In the VS Code explorer, right-click on a file.
-   - Select **Open in Gitlab** from the context menu.
-   - The corresponding file will open in your default web browser via Gitlab.
+   - In the VS Code explorer, right-click on a file and select **Open in Gitlab** from the context menu, **or**
+   - Open the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run **Open in Gitlab** to open the currently active file.
+   - The corresponding file will open in your default web browser.
 
 ## Configuration Options
 
 The extension can be customized through the following settings:
 
-### `openInGitlab.basePath`
+### `openInGitlab.instanceUrl`
 
 - **Type:** `string`
-- **Default:** "your-base-path"
-- **Description:** The base path in the Gitlab URL after the domain. This may include paths specific to your organization's Gitlab setup.
+- **Default:** `"https://gitlab.com"`
+- **Description:** The full URL of your GitLab instance. Use the default for gitlab.com or set this to your self-hosted instance (e.g. `https://gitlab.mycompany.com`).
 
 ## Example Configuration
 
-You should configure the extension settings as follows:
+For a self-hosted instance, set:
 
-- **Base Path:**
+```json
+"openInGitlab.instanceUrl": "https://gitlab.mycompany.com"
+```
 
-  "https://code.company.com/path"
-
-With these settings, the extension constructs the Gitlab URL as:
+With that setting, the extension constructs URLs in the form:
 
 ```
-https://code.company.com/path/<workspace-folder>/-/blob/<headBranchName>/<relativeFilePath>
+https://gitlab.mycompany.com/<workspace-folder>/-/blob/<branch>/<relativeFilePath>
 ```
 
 ## Troubleshooting
 
 - **Incorrect URL Structure:**
 
-  - Double-check your `basePath` settings to ensure they match your organization's Gitlab URL structure.
+  - Double-check your `instanceUrl` setting and ensure it includes the protocol (`https://`) and no trailing slash.
 
 ## License
 
