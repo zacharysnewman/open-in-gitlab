@@ -2,6 +2,8 @@ import * as vscode from "vscode";
 import * as path from "path";
 
 export function activate(context: vscode.ExtensionContext) {
+  warnIfLegacyBasePath();
+
   let disposable = vscode.commands.registerCommand(
     "openInGitlab.open",
     (uri: vscode.Uri) => {
@@ -50,6 +52,31 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
   context.subscriptions.push(disposable);
+}
+
+function warnIfLegacyBasePath() {
+  const config = vscode.workspace.getConfiguration("openInGitlab");
+  const inspected = config.inspect<string>("basePath");
+  const isSet =
+    inspected?.globalValue !== undefined ||
+    inspected?.workspaceValue !== undefined ||
+    inspected?.workspaceFolderValue !== undefined;
+
+  if (isSet) {
+    vscode.window
+      .showWarningMessage(
+        "Open in GitLab: The 'openInGitlab.basePath' setting has been replaced by 'openInGitlab.instanceUrl'. Please update your settings.",
+        "Open Settings"
+      )
+      .then((selection) => {
+        if (selection === "Open Settings") {
+          vscode.commands.executeCommand(
+            "workbench.action.openSettings",
+            "openInGitlab.instanceUrl"
+          );
+        }
+      });
+  }
 }
 
 function getRepoHeadName(workspaceUri: vscode.Uri): string {
