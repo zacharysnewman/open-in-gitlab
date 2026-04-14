@@ -14,7 +14,7 @@
 
 | Editor | Link |
 |--------|------|
-| VS Code | [Install from Marketplace](vscode:extension/zacharysnewman.open-in-gitlab) |
+| VS Code | [Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=zacharysnewman.open-in-gitlab) |
 | Cursor / other VS Code-compatible editors | [Install from Open VSX](https://open-vsx.org/extension/zacharysnewman/open-in-gitlab) |
 
 Or search for **"Open in Gitlab"** in your editor's Extensions panel.
