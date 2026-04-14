@@ -12,11 +12,12 @@
 
 ## Installation
 
-1. **Install the Extension:**
+| Editor | Link |
+|--------|------|
+| VS Code | [Install from Marketplace](vscode:extension/zacharysnewman.open-in-gitlab) |
+| Cursor / other VS Code-compatible editors | [Install from Open VSX](https://open-vsx.org/extension/zacharysnewman/open-in-gitlab) |
 
-   - Open the Extensions view in VS Code (`Ctrl+Shift+X` or `Cmd+Shift+X`).
-   - Search for "**Open in Gitlab**".
-   - Click **Install** to add the extension to your VS Code.
+Or search for **"Open in Gitlab"** in your editor's Extensions panel.
 
 ## Usage
 
