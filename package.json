@@ -58,10 +58,10 @@
       "type": "object",
       "title": "Open in Gitlab Configuration",
       "properties": {
-        "openInGitlab.basePath": {
+        "openInGitlab.instanceUrl": {
           "type": "string",
-          "default": "your-base-path",
-          "description": "The base path used in the Gitlab URL."
+          "default": "https://gitlab.com",
+          "description": "The full URL of your GitLab instance (e.g. https://gitlab.com or https://gitlab.mycompany.com)."
         }
       }
     }
